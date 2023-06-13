@@ -1,4 +1,5 @@
-export const Home = () => {
+export const Home = ({games,
+}) => {
     return(
         <section id="welcome-world">
         <div className="welcome-message">
@@ -11,9 +12,9 @@ export const Home = () => {
           {/* Display div: with information about every game (if any) */}
           <div className="game">
             <div className="image-wrap">
-              <img src="./images/CoverFire.png" />
+              <img src={games.imageUrl} />
             </div>
-            <h3>Cover Fire</h3>
+            <h3>{games.title}</h3>
             <div className="rating">
               <span>☆</span>
               <span>☆</span>
@@ -27,42 +28,7 @@ export const Home = () => {
               </a>
             </div>
           </div>
-          <div className="game">
-            <div className="image-wrap">
-              <img src="./images/ZombieLang.png" />
-            </div>
-            <h3>Zombie Lang</h3>
-            <div className="rating">
-              <span>☆</span>
-              <span>☆</span>
-              <span>☆</span>
-              <span>☆</span>
-              <span>☆</span>
-            </div>
-            <div className="data-buttons">
-              <a href="#" className="btn details-btn">
-                Details
-              </a>
-            </div>
-          </div>
-          <div className="game">
-            <div className="image-wrap">
-              <img src="./images/MineCraft.png" />
-            </div>
-            <h3>MineCraft</h3>
-            <div className="rating">
-              <span>☆</span>
-              <span>☆</span>
-              <span>☆</span>
-              <span>☆</span>
-              <span>☆</span>
-            </div>
-            <div className="data-buttons">
-              <a href="#" className="btn details-btn">
-                Details
-              </a>
-            </div>
-          </div>
+
           {/* Display paragraph: If there is no games  */}
           <p className="no-articles">No games yet</p>
         </div>

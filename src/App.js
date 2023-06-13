@@ -6,15 +6,30 @@ import { Register } from "./components/Register/Register";
 import { Create } from "./components/Create/Create";
 import { Catalogue } from "./components/Catalogue/Catalogue";
 import { Details } from "./components/Details/Details";
+import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3030/data/games`)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setGames(data);
+      });
+  }, []);
+
+  console.log(games);
+
   return (
     <div id="box">
       <Header />
       {/* Main Content */}
       <main id="main-content"></main>
       {/*Home Page*/}
-      <Home />
+      {/* <Home /> */}
       {/* Login Page ( Only for Guest users ) */}
       {/* <Login /> */}
       {/* Register Page ( Only for Guest users ) */}
@@ -23,8 +38,18 @@ function App() {
       {/* <Create /> */}
 
       {/* <Details /> */}
-   
+
       {/* <Catalogue /> */}
+
+      <Routes>
+        <Route path="/" element={<Home games={games} />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/create game" element={<Create />}></Route>
+        <Route path="/details" element={<Details />}></Route>
+        <Route path="/catalogue" element={<Catalogue />}></Route>
+        <Route path="*" element={<h3>not found</h3>}></Route>
+      </Routes>
     </div>
   );
 }

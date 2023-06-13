@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export const Login = () => {
   return (
     <div>
@@ -19,7 +20,7 @@ export const Login = () => {
             <input type="submit" className="btn submit" defaultValue="Login" />
             <p className="field">
               <span>
-                If you don't have profile click <a href="#">here</a>
+                If you don't have profile click <Link to="/login">here</Link>
               </span>
             </p>
           </div>
