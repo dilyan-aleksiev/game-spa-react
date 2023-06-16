@@ -47,7 +47,8 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/create game" element={<Create />}></Route>
         <Route path="/details" element={<Details />}></Route>
-        <Route path="/catalogue" element={<Catalogue />}></Route>
+        <Route path="/catalogue" element={<Catalogue games={games} />}></Route>
+        <Route path="/catalogue/:gamesId" element={<Details games={games} />}></Route>
         <Route path="*" element={<h3>not found</h3>}></Route>
       </Routes>
     </div>

@@ -6,12 +6,12 @@ export const Header = () => {
     <header>
       {/* Navigation */}
       <h1>
-        <a className="home" href="#">
+        <Link to={"/"} className="home" >
           GamesPlay
-        </a>
+        </Link>
       </h1>
       <nav>
-        <Link to={"/"}>All games</Link>
+        <Link to={"/catalogue"}>All games</Link>
         {/* Logged-in users */}
         <div id="user">
           <Link to={"/create game"}>Create Game</Link>
