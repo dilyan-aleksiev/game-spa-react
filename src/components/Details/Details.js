@@ -5,10 +5,37 @@ export const Details = ({ games }) => {
   const params = useParams();
   // console.log(params.gamesId);
   const currentGame = games.find((x) => x._id == params.gamesId);
-  const [username, setUsername] = useState("");
-  const [comment, setComment] = useState("");
-  console.log(`username : ${username}`);
-  console.log(`Comment : ${comment}`);
+  const [username, setUsername] = useState({ username: "" });
+  const [comment, setComment] = useState({ comment: "" });
+  // console.log(`username : ${username}`);
+  // console.log(`Comment : ${comment}`);
+
+  const addCommentHandler = (e) => {
+    e.preventDefault();
+    // (state) => {
+
+    // };
+
+    const userNameCommentResult = `${username.username} : ${comment.comment}`;
+
+    // console.log(username);
+    // console.log(comment);
+    // console.log(userNameCommentResult);
+  };
+
+  const onChangeUsername = (e) => {
+    setUsername((state) => ({
+      ...state,
+      username: e.target.value,
+    }));
+  };
+
+  const onChangeComment = (e) => {
+    setComment((state) => ({
+      ...state,
+      comment: e.target.value,
+    }));
+  };
 
   return (
     <div>
@@ -33,6 +60,7 @@ export const Details = ({ games }) => {
               </li>
               <li className="comment">
                 <p>Content: The best game.</p>
+                {/* <p>{username}: {comment}.</p> */}
               </li>
             </ul>
             {/* Display paragraph: If there are no games in the database */}
@@ -59,20 +87,18 @@ export const Details = ({ games }) => {
               name="username"
               type="text"
               placeholder="Ivan"
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-              value={username}
+              onChange={onChangeUsername}
+              value={username.username}
             />
 
             <textarea
               name="comment"
               placeholder="Comment......"
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-              value={comment}
-
+              // onChange={(e)=>{
+              //   setComment(e.target.value)
+              // }}
+              onChange={onChangeComment}
+              value={comment.comment}
             />
             <input className="btn submit" type="submit" value="Add Comment" />
           </form>
