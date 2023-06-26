@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const Details = ({ games }) => {
-  const params = useParams();
+export const Details = ({ games, addCommentInDetails }) => {
+  // const params = useParams();
   // console.log(params.gamesId);
-  const currentGame = games.find((x) => x._id == params.gamesId);
+  const { gamesId } = useParams();
+
+  const currentGame = games.find((x) => x._id === gamesId);
   const [username, setUsername] = useState({ username: "" });
   const [comment, setComment] = useState({ comment: "" });
   // console.log(`username : ${username}`);
@@ -12,11 +14,9 @@ export const Details = ({ games }) => {
 
   const addCommentHandler = (e) => {
     e.preventDefault();
-    // (state) => {
-
-    // };
 
     const userNameCommentResult = `${username.username} : ${comment.comment}`;
+    addCommentInDetails(gamesId, userNameCommentResult);
 
     // console.log(username);
     // console.log(comment);
@@ -44,7 +44,7 @@ export const Details = ({ games }) => {
         <h1>Game Details</h1>
         <div className="info-section">
           <div className="game-header">
-            <img className="game-img" src={currentGame.imageUrl} />
+            <img className="game-img" src={currentGame.imageUrl} alt="image" />
             <h1>Bright</h1>
             <span className="levels">{currentGame.maxLevel}</span>
             <p className="type">{currentGame.category}</p>
@@ -54,17 +54,17 @@ export const Details = ({ games }) => {
           <div className="details-comments">
             <h2>Comments:</h2>
             <ul>
-              {/* list all comments for current game (If any) */}
-              <li className="comment">
-                <p>Content: I rate this one quite highly.</p>
-              </li>
-              <li className="comment">
-                <p>Content: The best game.</p>
-                {/* <p>{username}: {comment}.</p> */}
-              </li>
+              {currentGame.comments?.map((x) => (
+                <li className="comment" >
+                  <p key={currentGame._id}>{x}</p>
+                </li>
+              ))}
             </ul>
-            {/* Display paragraph: If there are no games in the database */}
-            <p className="no-comment">No comments.</p>
+          
+            {!currentGame.comments &&
+             
+            <p className="no-comment">No comments.</p>}
+
           </div>
           {/* Edit/Delete buttons ( Only for creator of this game )  */}
           <div className="buttons">

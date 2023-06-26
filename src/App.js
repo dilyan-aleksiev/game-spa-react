@@ -23,6 +23,28 @@ function App() {
 
   console.log(games);
 
+  const addCommentInDetails = (gameId, comment) =>
+    // const comments = game.comments || [];
+    // comments.push(comment);
+    // setGames((games) =>
+    //   games.map((game) =>
+    //     game._id === gameId
+    //       ? { ...game, comments: [...comments, comment] }
+    //       : game
+    //   )
+    // );
+
+    setGames((games) =>
+
+      games.map((game) =>
+        game._id === gameId
+          ? { ...game, comments: [...(game.comments || []), comment] }
+          : game
+      )
+    );
+  //  console.log(games);
+  //  console.log(games.comments);
+
   return (
     <div id="box">
       <Header />
@@ -43,13 +65,23 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home games={games} />}></Route>
-        <Route path="/home/details/:gamesId" element={<Details games={games} />}></Route>
+        <Route
+          path="/home/details/:gamesId"
+          element={
+            <Details games={games} addCommentInDetails={addCommentInDetails} />
+          }
+        ></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/create game" element={<Create />}></Route>
         <Route path="/details" element={<Details />}></Route>
         <Route path="/catalogue" element={<Catalogue games={games} />}></Route>
-        <Route path="/catalogue/:gamesId" element={<Details games={games} />}></Route>
+        <Route
+          path="/catalogue/:gamesId"
+          element={
+            <Details games={games} addCommentInDetails={addCommentInDetails} />
+          }
+        ></Route>
         <Route path="*" element={<h3>not found</h3>}></Route>
       </Routes>
     </div>
