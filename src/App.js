@@ -21,29 +21,17 @@ function App() {
       });
   }, []);
 
-  console.log(games);
+  // console.log(games);
 
   const addCommentInDetails = (gameId, comment) =>
-    // const comments = game.comments || [];
-    // comments.push(comment);
-    // setGames((games) =>
-    //   games.map((game) =>
-    //     game._id === gameId
-    //       ? { ...game, comments: [...comments, comment] }
-    //       : game
-    //   )
-    // );
-
     setGames((games) =>
-
       games.map((game) =>
         game._id === gameId
           ? { ...game, comments: [...(game.comments || []), comment] }
           : game
       )
     );
-  //  console.log(games);
-  //  console.log(games.comments);
+
 
   return (
     <div id="box">

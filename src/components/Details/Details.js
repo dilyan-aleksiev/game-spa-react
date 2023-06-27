@@ -31,7 +31,7 @@ export const Details = ({ games, addCommentInDetails }) => {
   };
 
   const onChangeComment = (e) => {
-    setComment((state) => ({
+    setComment(state => ({
       ...state,
       comment: e.target.value,
     }));
@@ -55,8 +55,8 @@ export const Details = ({ games, addCommentInDetails }) => {
             <h2>Comments:</h2>
             <ul>
               {currentGame.comments?.map((x) => (
-                <li className="comment" >
-                  <p key={currentGame._id}>{x}</p>
+                <li key={Math.random()} className="comment" >
+                  <p >{x}</p>
                 </li>
               ))}
             </ul>

@@ -1,9 +1,49 @@
+import { useState } from "react"
 export const Create = () => {
+  // const [title, setTitle] = useState({ title: "" });
+  // const [category, setCategory] = useState({ category: "" });
+  // const [level, setLevel] = useState({ level: "" });
+  // const [img, setImg] = useState({ img: "" });
+  // const [summary, setSummary] = useState({ summary: "" });
+  // console.log(title, category, level, img, summary);
+
+  const [a, setA] = useState({
+    title: "",
+    category: "",
+    level: "",
+    img: "",
+    summary: "",
+  });
+
+
+// console.log(a);
+
+
+  const addGame = (e) => {
+    e.preventDefault();
+    // console.log(
+    //   "title",
+    //   title,
+    //   "category",
+    //   category,
+    //   "level",
+    //   level,
+    //   "img",
+    //   img,
+    //   "summary",
+    //   summary
+      
+    // );
+    console.log(a);
+    console.log("ala bala");
+  };
+
+
   return (
     <div>
       {" "}
       <section id="create-page" className="auth">
-        <form id="create">
+        <form id="create" onSubmit={addGame}>
           <div className="container">
             <h1>Create Game</h1>
             <label htmlFor="leg-title">Legendary title:</label>
@@ -12,6 +52,19 @@ export const Create = () => {
               id="title"
               name="title"
               placeholder="Enter game title..."
+              // onChange={(e) => {
+              //   setTitle((state) => ({
+              //     ...state,
+              //     title: e.target.value,
+              //   }));
+              // }}
+              onChange={(e) => {
+                setA((state) => ({
+                  ...state,
+                title: e.target.value ,
+                }));
+              }}
+              
             />
             <label htmlFor="category">Category:</label>
             <input
@@ -19,6 +72,18 @@ export const Create = () => {
               id="category"
               name="category"
               placeholder="Enter game category..."
+              onChange={(e) =>
+                setA((state) => ({
+                  ...state,
+                   category: e.target.value ,
+                }))
+              }
+              // onChange={(e) =>
+              //   setCategory((state) => ({
+              //     ...state,
+              //     category: e.target.value,
+              //   }))
+              // }
             />
             <label htmlFor="levels">MaxLevel:</label>
             <input
@@ -27,6 +92,18 @@ export const Create = () => {
               name="maxLevel"
               min={1}
               placeholder={1}
+              // onChange={(e) =>
+              //   setLevel((state) => ({
+              //     ...state,
+              //     level: e.target.value,
+              //   }))
+              // }
+              onChange={(e) =>
+                setA((state) => ({
+                  ...state,
+                 level: e.target.value ,
+                }))
+              }
             />
             <label htmlFor="game-img">Image:</label>
             <input
@@ -34,9 +111,37 @@ export const Create = () => {
               id="imageUrl"
               name="imageUrl"
               placeholder="Upload a photo..."
+              // onChange={(e) =>
+              //   setImg((state) => ({
+              //     ...state,
+              //     img: e.target.value,
+              //   }))
+              // }
+              onChange={(e) =>
+                setA((state) => ({
+                  ...state,
+                 img: e.target.value,
+                }))
+              }
             />
             <label htmlFor="summary">Summary:</label>
-            <textarea name="summary" id="summary" defaultValue={""} />
+            <textarea
+              name="summary"
+              id="summary"
+              defaultValue={""}
+              // onChange={(e) =>
+              //   setSummary((state) => ({
+              //     ...state,
+              //     summary: e.target.value,
+              //   }))
+              // }
+              onChange={(e) =>
+                setA((state) => ({
+                  ...state,
+                   summary: e.target.value ,
+                }))
+              }
+            />
             <input
               className="btn submit"
               type="submit"
@@ -76,4 +181,4 @@ export const Create = () => {
       </section>
     </div>
   );
-}
+};
