@@ -1,5 +1,5 @@
 import { useState } from "react"
-export const Create = () => {
+export const Create = ({addGame}) => {
   // const [title, setTitle] = useState({ title: "" });
   // const [category, setCategory] = useState({ category: "" });
   // const [level, setLevel] = useState({ level: "" });
@@ -10,16 +10,17 @@ export const Create = () => {
   const [a, setA] = useState({
     title: "",
     category: "",
-    level: "",
-    img: "",
+    maxLevel: "",
+    imageUrl: "",
     summary: "",
+    _id: Math.random().toString()
   });
 
 
 // console.log(a);
 
 
-  const addGame = (e) => {
+  const addGameButton = (e) => {
     e.preventDefault();
     // console.log(
     //   "title",
@@ -36,6 +37,9 @@ export const Create = () => {
     // );
     console.log(a);
     console.log("ala bala");
+
+   addGame(a)
+
   };
 
 
@@ -43,7 +47,7 @@ export const Create = () => {
     <div>
       {" "}
       <section id="create-page" className="auth">
-        <form id="create" onSubmit={addGame}>
+        <form id="create" onSubmit={addGameButton}>
           <div className="container">
             <h1>Create Game</h1>
             <label htmlFor="leg-title">Legendary title:</label>
@@ -101,7 +105,7 @@ export const Create = () => {
               onChange={(e) =>
                 setA((state) => ({
                   ...state,
-                 level: e.target.value ,
+                 maxLevel: e.target.value ,
                 }))
               }
             />
@@ -120,7 +124,7 @@ export const Create = () => {
               onChange={(e) =>
                 setA((state) => ({
                   ...state,
-                 img: e.target.value,
+                 imageUrl: e.target.value,
                 }))
               }
             />

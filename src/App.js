@@ -21,7 +21,7 @@ function App() {
       });
   }, []);
 
-  // console.log(games);
+  console.log(games);
 
   const addCommentInDetails = (gameId, comment) =>
     setGames((games) =>
@@ -32,6 +32,13 @@ function App() {
       )
     );
 
+  const addGame = (a) => {
+    setGames((games) => ([
+      ...games,
+      a, 
+ 
+    ]));
+  };
 
   return (
     <div id="box">
@@ -61,7 +68,10 @@ function App() {
         ></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
-        <Route path="/create game" element={<Create />}></Route>
+        <Route
+          path="/create game"
+          element={<Create addGame={addGame} />}
+        ></Route>
         <Route path="/details" element={<Details />}></Route>
         <Route path="/catalogue" element={<Catalogue games={games} />}></Route>
         <Route

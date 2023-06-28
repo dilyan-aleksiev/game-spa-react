@@ -11,7 +11,7 @@ export const Home = ({games}) => {
         <h1>Latest Games</h1>
         {/* Display div: with information about every game (if any) */}
         {games.length > 0
-        ? games.map(x =><SingleGame key={x._id} games={x} />) 
+        ? games.map(x =><SingleGame key={Math.random()} games={x} />) 
         :<p className="no-articles">No games yet</p>
         }
       </div>
